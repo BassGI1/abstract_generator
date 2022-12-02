@@ -57,5 +57,13 @@ def genImage():
     image = resize(image, rules["blockSize"][size][1])
     return image
 
+def averageImages(im1, im2):
+    for x in range(len(im1)):
+        for y in range(len(im1[x])):
+            r1, g1, b1 = im1[x][y]
+            r2, g2, b2 = im2[x][y]
+            im1[x][y] = [(b1 + b2)/2, (g1 + g2)/2, (r1 + r2)/2]
+    return im1
+
 cv.imshow('image', genImage())
 cv.waitKey(0)
